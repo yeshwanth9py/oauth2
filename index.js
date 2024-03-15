@@ -8,7 +8,7 @@ require("./auth.js");
 require("dotenv").config();
 
 app.use(session({
-    secret: process.env.secret,
+    // secret: process.env.secret,
     resave: false,
     saveUninitialized: true,
     cookie: { secure: false }  //if true it will only set the cookies when the website is running on https
@@ -16,6 +16,8 @@ app.use(session({
 
 app.use(passport.initialize());
 app.use(passport.session());
+
+
 function isloggedin(req, res, next){
     req.user?next():res.sendStatus(401);
 }
