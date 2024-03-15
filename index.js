@@ -5,8 +5,10 @@ const session = require('express-session')
 
 require("./auth.js");
 
+require("dotenv").config();
+
 app.use(session({
-    secret: 'my secret',
+    secret: process.env.secret,
     resave: false,
     saveUninitialized: true,
     cookie: { secure: false }  //if true it will only set the cookies when the website is running on https
